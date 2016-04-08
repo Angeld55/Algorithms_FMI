@@ -25,7 +25,6 @@ namespace exercise
             
             if ((x < 0) || (x >= visited.GetLength(0) || (y < 0) || (y >= visited.GetLength(1))))
             {
-                
                 return false;
             }
             
@@ -36,10 +35,7 @@ namespace exercise
 
             if (moves == necesseryMoves)
             {
-
                 visited[x,y] = true;
-
-               
                 return true;
             }
             else
@@ -47,20 +43,16 @@ namespace exercise
                 visited[x, y] = true;
                 bool res = false;
                 res = (res || (Move(x + 1, y + 2, moves + 1, necesseryMoves, visited)));
-              
                 res = (res || (Move(x + 2, y - 1, moves + 1, necesseryMoves, visited)));
                 res = (res || (Move(x + 2, y + 1, moves + 1, necesseryMoves,visited)));
                 res = (res || (Move(x + 2, y - 1, moves + 1, necesseryMoves, visited)));
                 res = (res || (Move(x - 2, y + 1,  moves + 1, necesseryMoves, visited)));
                 res = (res || (Move(x - 2, y - 1,  moves + 1, necesseryMoves, visited)));
-               
                 res = (res || (Move(x + 1, y - 2,  moves + 1, necesseryMoves, visited)));
                 res = (res || (Move(x - 1, y + 2,  moves + 1, necesseryMoves, visited)));
                 res = (res || (Move(x - 1, y - 2,  moves + 1, necesseryMoves, visited)));
                 if (res == true)
                 {
-
-                    
                     Console.WriteLine("x --> " + x);
                     Console.WriteLine("y --> " + y);
                     Console.WriteLine();
