@@ -43,7 +43,7 @@ void BubbleSort(int* arr,int len)
             return;
      }
 }
-void NaiveInsertionSort(int* arr,int len)
+void NaiveInsertionSort(int* arr,int len) //Bad! Common mistake!
 {
     for(int i = 1;i<len;i++)
     {
