@@ -7,15 +7,15 @@ void Eratosthenes(unsigned n)
 
 	for (int i = 2; i <n; i++)
 	{
-		if (nums[i])
+		if (!nums[i])
+			continue;
+		int index = i+i;
+		while (index < n)
 		{
-			int index = i+i;
-			while (index < n)
-			{
-				nums[index] = false;
-				index += i;
-			}
+			nums[index] = false;
+			index += i;
 		}
+		
 	}
 	for (int i = 2; i < n; i++)
 	{
