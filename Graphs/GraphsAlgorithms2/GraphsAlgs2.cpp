@@ -204,7 +204,9 @@ int Graph::CountPaths(int s,int t)
 			dyn[y]+=dyn[x];
 		}
 	}
-	return dyn[t];
+	int res = dyn[t];
+	delete[] dyn, topSort;
+	return res;
 }
 int main()
 {
