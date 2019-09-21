@@ -27,7 +27,7 @@ public:
 	
 	bool hasOneStronglyConnectedComponent();
 	
-	int countPaths(int start,int end); //Must be acyclic-> Naive implementation. For better solution, check the GraphsAlgorithms2 or the Dynamic programming algorithms
+	int countPaths(int start,int end); //Must be acyclic-> Naive implementation. For a better solution, check the GraphsAlgorithms2 or the Dynamic programming algorithms
 	
 	bool hasEulerCircuit();
 	
@@ -155,7 +155,7 @@ bool Graph::hasOneStronglyConnectedComponent()
 	return allTrue(visited,V);
 
 } 
-int Graph::countPaths(int start,int end)  //Must be acyclic-> Naive implementation. For better solution, check the GraphsAlgorithms2 or the Dynamic programming algorithms
+int Graph::countPaths(int start,int end)  //Must be acyclic-> Naive implementation. For a better solution, check the GraphsAlgorithms2 or the Dynamic programming algorithms
 {
 	if (start == end)
 		return 1;
