@@ -36,7 +36,7 @@ public:
 	int* BellmanFord(int start); // path between a vertex and all other verticies
 
 
-	int* LongestPath(int s);
+	int* LongestPath(int s); // longest paths form s to all other verticies
 	
 	int CountPaths(int s,int t); // paths count between two verticies
 
