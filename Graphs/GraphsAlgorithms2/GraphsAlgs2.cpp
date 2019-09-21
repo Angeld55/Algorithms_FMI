@@ -26,7 +26,7 @@ public:
 	void addEdge(int v, int w,int weight);
 	
 	
-	int* TopologicalSort();
+	int* TopologicalSort(); // Return an array with all the verticies in topologial-order
 
 
 	// Dynamic programming algorithms
