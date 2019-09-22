@@ -20,7 +20,7 @@ void BubbleSort(T* arr,int len)
              isSwapped=true;
             }
         }
-        if(!isSwapped)//sortiran l ie masiwa?
+        if(!isSwapped)//Масив дали вече е сортиран? 
             return;
      }
 }
