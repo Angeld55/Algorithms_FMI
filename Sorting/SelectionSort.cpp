@@ -1,5 +1,5 @@
 template <class T>
-void swap(T* arr,T i ,T j)
+void swap(T* arr,int i ,int j)
 {
  T temp = arr[i];
  arr[i]=arr[j];
