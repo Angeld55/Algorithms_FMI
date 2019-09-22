@@ -31,8 +31,11 @@ bool subsetSum(int* arr, int n, int sum)
 		}
 	}
 
-
-	return dyn[n][sum];
+	bool res = dyn[n][sum];
+	for(int i = 0; i<n+1;i++)
+   		delete[]  dyn[i];
+	delete[] dyn;
+	return res;
 }
 int main()
 {
