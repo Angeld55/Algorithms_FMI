@@ -19,7 +19,7 @@ unsigned long FibbDP(int n)
 	return res;
 }
 // сравнение за време! Има и 3-ти начин (с мемоизация).
-
+// time comparison
 int main()
 {
 	
