@@ -22,8 +22,13 @@ void printMatrix(int** m, int rows, int colls)
 }
 int max(int a, int b)
 {
-	if (a > b)
-		return a;
-	else
-		return b;
+	return (a > b) ? a : b; 
+}
+int min(int a,int b)
+{
+	return (a < b) ? a : b; 	
+}
+int min(int a,int b,int c)
+{
+	return min(min(a,b),c);
 }
