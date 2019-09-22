@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
 
-int DownRightSumRec(int** matrix,int endX,int endY)
+int MoveDownOrRightRec(int** matrix,int endX,int endY)
 {
 
 	if(endX==0 && endY==0)
 		return matrix[0][0];
 	else if(endX==0)
-		return DownRightSumRec(matrix,endX,endY-1) + matrix[endX][endY];
+		return MoveDownOrRightRec(matrix,endX,endY-1) + matrix[endX][endY];
 	else if(endY==0)
-		return DownRightSumRec(matrix,endX-1,endY) + matrix[endX][endY];
+		return MoveDownOrRightRec(matrix,endX-1,endY) + matrix[endX][endY];
 	else
-	   return max(DownRightSumRec(matrix,endX-1,endY),DownRightSumRec(matrix,endX,endY-1))+matrix[endX][endY];
+	   return max(MoveDownOrRightRec(matrix,endX-1,endY),MoveDownOrRightRec(matrix,endX,endY-1))+matrix[endX][endY];
 
 }
-int DownRightSumDP(int** m, int rows,int colls)
+int MoveDownOrRightDP(int** m, int rows,int colls)
 {
 	int** DP = createMatrix(rows, colls);
 
@@ -44,9 +44,7 @@ int DownRightSumDP(int** m, int rows,int colls)
 
 int main()
 {
-    int** arr = new int*[3];
-    for(int i =0; i<3;i++)
-        arr[i] = new int[3];
+    int** arr = createMatrix(3, 3);
         
         
     for(int i =0;i<3;i++)
@@ -56,6 +54,9 @@ int main()
         arr[2][2-i]=-1*i*i;
     }
 
-	cout << DownRightSumRec(arr, 2, 2);
-    cout << DownRightSumDP(arr, 3, 3);
+    cout << MoveDownOrRightRec(arr, 2, 2);
+    cout << MoveDownOrRightDP(arr, 3, 3);
+    //Compare for larger matricies and see the difference
+	
+    deleteMatrix(arr,3);		
 }
