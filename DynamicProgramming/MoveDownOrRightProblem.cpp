@@ -1,4 +1,5 @@
 #include <iostream>
+#include "HelpFunctions.hpp"
 using namespace std;
 
 int MoveDownOrRightRec(int** matrix,int endX,int endY)
@@ -11,7 +12,7 @@ int MoveDownOrRightRec(int** matrix,int endX,int endY)
 	else if(endY==0)
 		return MoveDownOrRightRec(matrix,endX-1,endY) + matrix[endX][endY];
 	else
-	   return max(MoveDownOrRightRec(matrix,endX-1,endY),MoveDownOrRightRec(matrix,endX,endY-1))+matrix[endX][endY];
+	   	return max(MoveDownOrRightRec(matrix,endX-1,endY),MoveDownOrRightRec(matrix,endX,endY-1))+matrix[endX][endY];
 
 }
 int MoveDownOrRightDP(int** m, int rows,int colls)
