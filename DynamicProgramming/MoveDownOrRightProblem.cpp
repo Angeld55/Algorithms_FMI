@@ -53,7 +53,7 @@ int main()
 {
     int** arr = createMatrix(3, 3);
         
-        
+    //just an example matrix    
     for(int i =0;i<3;i++)
     {
         arr[0][i]=i;
