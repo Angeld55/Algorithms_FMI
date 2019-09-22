@@ -2,6 +2,12 @@
 #include "HelpFunctions.hpp"
 using namespace std;
 
+//You are given a matrix of numbers.
+//Find the largest sum of cells
+//starting from the top left corner
+//ending at the bottom right corner
+//going down or right at each step
+
 int MoveDownOrRightRec(int** matrix,int endX,int endY)
 {
 
