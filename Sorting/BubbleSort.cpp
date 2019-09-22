@@ -1,10 +1,13 @@
-void swap(int* arr,int i ,int j)
+template <class T>
+void swap(T* arr,T i ,T j)
 {
- int temp = arr[i];
+ T temp = arr[i];
  arr[i]=arr[j];
  arr[j]=temp;
 }
-void BubbleSort(int* arr,int len)
+
+template <class T>
+void BubbleSort(T* arr,int len)
 {
     for(int j = 0;j<len;j++)
     {
