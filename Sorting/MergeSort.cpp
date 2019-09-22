@@ -16,7 +16,7 @@ int main()
     
 }
 template <class T>
-void MergeSort(T* arr, int len) //Not the best implementation.
+void MergeSort(T* arr, int len) 
 {
    
     if(len<=1)
