@@ -1,3 +1,7 @@
+#include "HelpFunctions.hpp"
+using namespace std;
+
+
 //Compare for time! See the difference!
 
 int LevensteinDistanceRec(string str1, string str2, int m, int n)
