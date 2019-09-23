@@ -1,8 +1,5 @@
-// Example program
+
 #include <iostream>
-#include <string>
-
-
 
 bool isPrime(int n)
 {
