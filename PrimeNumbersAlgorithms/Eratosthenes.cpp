@@ -2,7 +2,7 @@
 void Eratosthenes(unsigned n)
 {
 	bool* nums = new bool[n];
-	for (int i = 0; i < n; i++) //unnecessary
+	for (int i = 0; i < n; i++) 
 		nums[i] = true;
 
 	for (int i = 2; i <n; i++)
@@ -26,6 +26,6 @@ void Eratosthenes(unsigned n)
 
 }
 int main() {
-	Eratosthenes(300);  // 2 3 5 7 11........... 191 193 197 199
+	Eratosthenes(200);  // 2 3 5 7 11........... 191 193 197 199
 
 }
