@@ -16,5 +16,5 @@
  - Floyd–Warshall.
  - 	Bellman-Ford.
  -  Longest path.
- - Dijkstra's algorithm
+ -  Dijkstra.
  
