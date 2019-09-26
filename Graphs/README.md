@@ -16,4 +16,5 @@
  - 	Bellman-Ford.
  -  Longest path.
  - Count paths between two nodes.
+ - Dijkstra's algorithm
  
