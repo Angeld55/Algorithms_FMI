@@ -30,7 +30,7 @@ public:
 
 	bool hasEulerCircuit();
 
-	int Graph::CountPaths(int s, int t);
+	int CountPaths(int s, int t);
 
 };
 
