@@ -18,3 +18,9 @@
  -  Longest path.
  -  Dijkstra.
  
+<h3>Graph algorithms 2 (minimum spanning tree)</h3>
+ Algorithms:
+ 
+ - Prim's algorithm.
+ - Kruskal's algorithm.
+ - Borůvka's algorithm
