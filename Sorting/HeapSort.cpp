@@ -10,7 +10,7 @@ void swap(T* arr, int i, int j)
 }
 
 template <typename T>
-void Heapyfy(T* arr, int el, int count)
+void Heapyfy(T* arr, int el, int count) //Not the best implementation (good for education purposes)
 {
 	int elIndex = el;
 	while (true)
