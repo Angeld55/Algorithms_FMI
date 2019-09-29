@@ -30,8 +30,8 @@ class Graph
 	vector<vector<edge>> adj;
 
 public:
-	Graph(int V);
-	void addEdge(int v, int w, int weight);
+    Graph(int V);
+    void addEdge(int v, int w, int weight);
     int getVerticesCount();
 
     void Print();
