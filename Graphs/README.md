@@ -9,7 +9,7 @@
  -  Has an euler cycle.
  - Count paths between two nodes.
  
-<h3>Graph algorithms 2 (for weighted graph)</h3>
+<h3>Graph algorithms 2 (paths in a weighted graph)</h3>
  Algorithms:
  
 
