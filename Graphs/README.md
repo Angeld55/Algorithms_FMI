@@ -3,7 +3,8 @@
 <h3>Graph algorithms 1 (for unweighted graph)</h3>
  Algorithms for:
  
-
+ 
+ - Topological sorting.
  - Detecting if a graph contains cycles.
  - 	Check if a graph has one strongly-connected compoment.
  -  Has an euler cycle.
