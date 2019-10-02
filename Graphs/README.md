@@ -19,7 +19,7 @@
  -  Longest path.
  -  Dijkstra.
  
-<h3>Graph algorithms 2 (minimum spanning tree)</h3>
+<h3>Graph algorithms 3 (minimum spanning tree)</h3>
  Algorithms:
  
  - Prim's algorithm.
