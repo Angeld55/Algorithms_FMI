@@ -1,5 +1,13 @@
 # Graph alogirthms
 
+<h3>Graph algorithms 0 (for unweighted graph)</h3>
+ Algorithms for:
+ 
+ 
+ - Breadth-first search (BFS) 
+ - Depth-first search (DFS) - Non-recursive
+ - Depth-first search (DFS) - Recursive
+
 <h3>Graph algorithms 1 (for unweighted graph)</h3>
  Algorithms for:
  
