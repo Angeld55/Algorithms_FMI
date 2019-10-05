@@ -1,4 +1,5 @@
 #include "Graph.hpp"
+
 int main()
 {
     Graph g(6);
@@ -17,4 +18,7 @@ int main()
     g.DFS();
     cout<<endl;
     
+    cout<<"DFS recursive: ";
+    g.DFSrecursive();
+    cout<<endl;
 }
