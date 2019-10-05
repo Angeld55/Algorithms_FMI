@@ -1,6 +1,6 @@
 # Graph alogirthms
 
-<h3>Graph algorithms 0 (for unweighted graph)</h3>
+<h3>Graph algorithms 0 (Graph traversals)</h3>
  Algorithms for:
  
  
