@@ -1,7 +1,7 @@
 # Graph alogirthms
 
 <h3>Graph algorithms 0 (Graph traversals)</h3>
- Algorithms for:
+ Algorithms:
  
  
  - Breadth-first search (BFS) 
