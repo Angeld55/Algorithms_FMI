@@ -3,6 +3,13 @@ using namespace std;
 #include <queue>
 #include <stack>
 
+//The non-recursive implementation is similar to breadth-first search but differs from it in two ways:
+
+//1.it uses a stack instead of a queue, and
+//2.it delays checking whether a vertex has been discovered until the vertex is popped from the stack rather than making this check before adding the vertex.
+
+
+
 class Graph
 {
 	int V;
@@ -13,7 +20,7 @@ public:
 	void addEdge(int v, int w);
 	
 	void BFS();
-    void DFS();
+        void DFS();
 };
 
 Graph::Graph(int V)
@@ -85,10 +92,4 @@ void Graph::DFS()
     delete[] visited;
     
 }
-
-//The non-recursive implementation is similar to breadth-first search but differs from it in two ways:
-
-//1.it uses a stack instead of a queue, and
-//2.it delays checking whether a vertex has been discovered until the vertex is popped from the stack rather than making this check before adding the vertex.
-
 
