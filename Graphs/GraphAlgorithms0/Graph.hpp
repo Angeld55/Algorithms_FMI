@@ -14,13 +14,14 @@ class Graph
 {
 	int V;
 	vector<vector<int>> adj;
-
+        void DFSrec(int start,bool* visited);
 public:
 	Graph(int V);
 	void addEdge(int v, int w);
 	
 	void BFS();
         void DFS();
+        void DFSrecursive();
 };
 
 Graph::Graph(int V)
@@ -92,4 +93,25 @@ void Graph::DFS()
     delete[] visited;
     
 }
-
+void Graph::DFSrec(int start,bool* visited)
+{
+     visited[start]=true;
+     cout<<start<<" ";
+     for(int i = 0; i < adj[start].size();i++)
+     {
+        int neighbor = adj[start][i];
+         if(!visited[neighbor])
+            DFSrec(neighbor,visited);
+     }
+    
+}
+void Graph::DFSrecursive()
+{
+    bool* visited = new bool[V];
+    for(int i = 0;i<V;i++)
+        visited[i]=false;
+    
+    DFSrec(0,visited);
+    
+    delete[] visited;
+}
