@@ -174,6 +174,7 @@ int* Graph::TopologicalSort()
 		sortedArr[i] = st.top();
 		st.pop();
 	}
+	delete[] visited;
 	return sortedArr;
 }
 
