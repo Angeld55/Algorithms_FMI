@@ -42,31 +42,17 @@ void  Merge(T* arr1,int len1,T* arr2,int len2)
     while(cursor1<len1&&cursor2<len2)
     {
         if(arr1[cursor1]<arr2[cursor2])
-        {
-            result[resultCursor]=arr1[cursor1];
-            cursor1++;
-        }
-        else
-        {   
-            result[resultCursor]=arr2[cursor2];
-            cursor2++;
-        }
-        resultCursor++;
+            result[resultCursor++]=arr1[cursor1++];
+        else  
+            result[resultCursor++]=arr2[cursor2++];
     }
     while(cursor1<len1)
-    {
-        result[resultCursor]=arr1[cursor1];
-        cursor1++;
-        resultCursor++;
-    }
-    while(cursor2<len2)
-    {
-          result[resultCursor]=arr2[cursor2];
-        cursor2++;
-         resultCursor++;
-    }
+        result[resultCursor++]=arr1[cursor1++];
 
     
+    while(cursor2<len2)
+        result[resultCursor++]=arr2[cursor2++];
+        
     for(int i = 0;i<(len1+len2);i++)//Въпреки,че arr1 е с по-малка големина, можем да си ползволим това да излезем извън масива, понеже знаем, че arr1 с arr2 са слепени
         arr1[i] = result[i];
     delete[] result;
