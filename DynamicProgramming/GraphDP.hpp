@@ -44,7 +44,7 @@ public:
 
 	int CountPaths(int s, int t); // paths count between two verticies (or between two vertices)
 
-	int Dijkstra(int start, int end);// shorets paths from s to all other verticies (this function return the shoretst path to end only)
+	int Dijkstra(int start, int end);// shortest paths from s to all other verticies (this function return the shoretst path to end only)
 
 
 
