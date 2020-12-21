@@ -1,5 +1,3 @@
-
-template<typename T>
 #include <iostream>
 using namespace std;
 
