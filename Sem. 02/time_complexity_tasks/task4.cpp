@@ -6,7 +6,7 @@ int f(int num)
 	int n = 0;
 	for (int i = 0; i < num; i++)
 	{
-		n += 2;
+		n += 1;
 	}
 	return n % 2;
 }
