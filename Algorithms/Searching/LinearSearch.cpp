@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-
-int linearSearch(const int* arr, int len, int searched)
+template <class T>
+int linearSearch(const T* arr, int len, T searched)
 {
 	for (int i = 0; i < len; i++)
 	{
@@ -16,5 +16,5 @@ int main()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 
-	cout << linearSearch(arr, 7, 10);
+	cout << linearSearch<int>(arr, 7, 10);
 }

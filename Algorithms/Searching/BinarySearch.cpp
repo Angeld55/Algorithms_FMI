@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-
-int binarySearch(const int* arr, int len, int searched)
+template <class T>
+int binarySearch(const T* arr, int len, T searched)
 {
 	int leftIndex = 0;
 	int rightIndex = len - 1;
@@ -24,5 +24,5 @@ int main()
 {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 
-	cout << binarySearch(arr, 7, 10);
+	cout << binarySearch<int>(arr, 7, 10);
 }
