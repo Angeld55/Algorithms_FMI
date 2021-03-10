@@ -1,28 +1,17 @@
 #include <iostream>
-#include <algorithm>
 
-
-int funcHelp(int i, int j)
+unsigned long long task8(unsigned long long n)
 {
-	if (i == 0 && j == 0)
+	if (n == 0)
 		return 1;
 
-	if (i == 0)
-		return funcHelp(i,j-1) + funcHelp(i,j-1);
-	if (j == 0)
-		return funcHelp(i - 1, j) + funcHelp(i-1, j);
-
-	return  10 * funcHelp(i - 1, j) +  11 * (i, j - 1) ;
+	unsigned long long res = 0;
+	for (int i = n-1; i >= 0; i--)
+		res += task8(i);
+	return res;
 }
-
-int task9(int n)
-{
-	return funcHelp(n, n);
-}
-
 
 int main()
 {
-
-	std::cout << task9(10);
+	std::cout << task8(8);
 }
