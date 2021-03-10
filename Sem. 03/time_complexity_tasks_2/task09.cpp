@@ -2,20 +2,20 @@
 #include <algorithm>
 
 
-int funcHelp(int i, int j)
+unsigned long long funcHelp(unsigned long long i, unsigned long long j)
 {
 	if (i == 0 && j == 0)
 		return 1;
 
 	if (i == 0)
-		return funcHelp(i,j-1) + funcHelp(i,j-1);
+		return funcHelp(i, j - 1) + funcHelp(i, j - 1);
 	if (j == 0)
 		return funcHelp(i - 1, j) + funcHelp(i-1, j);
 
 	return  10 * funcHelp(i - 1, j) +  11 * (i, j - 1) ;
 }
 
-int task9(int n)
+unsigned long long task9(unsigned long long n)
 {
 	return funcHelp(n, n);
 }
