@@ -12,7 +12,7 @@ unsigned long long funcHelp(unsigned long long i, unsigned long long j)
 	if (j == 0)
 		return funcHelp(i - 1, j) + funcHelp(i-1, j);
 
-	return  10 * funcHelp(i - 1, j) +  11 * (i, j - 1) ;
+	return  10 * funcHelp(i - 1, j) +  11 * funcHelp(i, j - 1) ;
 }
 
 unsigned long long task9(unsigned long long n)
