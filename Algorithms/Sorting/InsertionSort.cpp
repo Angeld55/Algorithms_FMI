@@ -11,10 +11,10 @@ void NaiveInsertionSort(T* arr,int len)
     for(int i = 1;i<len;i++)
     {
         T elIndex = i;
-        while(elIndex>0&&arr[elIndex]<arr[elIndex-1])
+        while(elIndex>0 && arr[elIndex] < arr[elIndex-1])
         {
-         swap(arr,elIndex,elIndex-1);
-         elIndex--;
+           swap(arr, elIndex, elIndex-1);
+           elIndex--;
         }
          
     }
@@ -22,11 +22,11 @@ void NaiveInsertionSort(T* arr,int len)
 template <class T>
 void InsertionSort(T* arr,int len)
 {
-    for(int i =1;i<len;i++)
+    for(int i =1; i<len; i++)
     {
         T element = arr[i];
-        int index = i-1;
-        while(index>=0&&arr[index]>element)
+        int index = i - 1;
+        while(index>=0 && arr[index]>element)
         {
             arr[index+1]=arr[index];
             index--;
