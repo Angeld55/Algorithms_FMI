@@ -31,7 +31,8 @@ void QuickSort(T* arr, int len)
 {
 	if (len <= 1)
 		return;
-	
+
+
 	int pivotIndex = Partition(arr, len);
 	QuickSort(arr, pivotIndex);
 	QuickSort(arr + pivotIndex + 1, len - pivotIndex-1);
