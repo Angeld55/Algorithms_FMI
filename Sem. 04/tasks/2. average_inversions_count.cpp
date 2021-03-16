@@ -80,12 +80,12 @@ int countInversionsAndSort(T* arr, int len)
 		}
 
 		end = lastSwappedIndex;
-		if (lastSwappedIndex == 0) //Масив дали вече е сортиран? 
+		if (lastSwappedIndex == 0) //ГЊГ Г±ГЁГў Г¤Г Г«ГЁ ГўГҐГ·ГҐ ГҐ Г±Г®Г°ГІГЁГ°Г Г­? 
 			return inversionsCount;
 	}
 }
 
-size_t countAverageInversionsCountInAllPermutions(int n)
+size_t AverageInversionsCountInAllPermutions(int n)
 {
 	int* arr = new int[n];
 
@@ -101,14 +101,14 @@ size_t countAverageInversionsCountInAllPermutions(int n)
 }
 void averageInversionsCountExample()
 {
-	cout << "n =  4, max inversions count =  4*(4-1)/2  =  6. Average inversions in all 4! permutations " << countAverageInversionsCountInAllPermutions(4) << endl;
-	cout << "n =  5, max inversions count =  5*(5-1)/2  = 10. Average inversions in all 5! permutations " << countAverageInversionsCountInAllPermutions(5) << endl;
-	cout << "n =  6, max inversions count =  6*(6-1)/2  = 15. Average inversions in all 6! permutations " << countAverageInversionsCountInAllPermutions(6) << endl;
-	cout << "n =  7, max inversions count =  7*(7-1)/2  = 21. Average inversions in all 7! permutations " << countAverageInversionsCountInAllPermutions(7) << endl;
-	cout << "n =  8, max inversions count =  8*(8-1)/2  = 23. Average inversions in all 8! permutations " << countAverageInversionsCountInAllPermutions(8) << endl;
-	cout << "n =  9, max inversions count =  9*(9-1)/2  = 36. Average inversions in all 9! permutations " << countAverageInversionsCountInAllPermutions(9) << endl;
-	cout << "n = 10, max inversions count = 10*(10-1)/2 = 45. Average inversions in all 10! permutations " << countAverageInversionsCountInAllPermutions(10) << endl;
-	cout << "n = 10, max inversions count = 11*(11-1)/2 = 55. Average inversions in all 11! permutations " << countAverageInversionsCountInAllPermutions(11) << endl;
+	cout << "n =  4, max inversions count =  4*(4-1)/2  =  6. Average inversions in all 4! permutations " << AverageInversionsCountInAllPermutions(4) << endl;
+	cout << "n =  5, max inversions count =  5*(5-1)/2  = 10. Average inversions in all 5! permutations " << AverageInversionsCountInAllPermutions(5) << endl;
+	cout << "n =  6, max inversions count =  6*(6-1)/2  = 15. Average inversions in all 6! permutations " << AverageInversionsCountInAllPermutions(6) << endl;
+	cout << "n =  7, max inversions count =  7*(7-1)/2  = 21. Average inversions in all 7! permutations " << AverageInversionsCountInAllPermutions(7) << endl;
+	cout << "n =  8, max inversions count =  8*(8-1)/2  = 23. Average inversions in all 8! permutations " << AverageInversionsCountInAllPermutions(8) << endl;
+	cout << "n =  9, max inversions count =  9*(9-1)/2  = 36. Average inversions in all 9! permutations " << AverageInversionsCountInAllPermutions(9) << endl;
+	cout << "n = 10, max inversions count = 10*(10-1)/2 = 45. Average inversions in all 10! permutations " << AverageInversionsCountInAllPermutions(10) << endl;
+	cout << "n = 10, max inversions count = 11*(11-1)/2 = 55. Average inversions in all 11! permutations " << AverageInversionsCountInAllPermutions(11) << endl;
 }
 
 int main()
