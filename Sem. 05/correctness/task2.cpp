@@ -3,6 +3,18 @@
 
 using namespace std;
  
+int taskMystery(int x, int y);
+
+
+int main()
+{
+
+	cout << taskMystery(5, 4);
+}
+
+
+
+
 int taskMystery(int x, int y)
 {
 	int z = x;
@@ -23,12 +35,4 @@ int taskMystery(int x, int y)
 		}
 	}
 	return p;
-}
-
-
-
-int main()
-{
-
-	cout << taskMystery(5, 4);
 }
