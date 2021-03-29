@@ -20,8 +20,6 @@ int main()
 {
 	int arr[SIZE] = { 1, 2, 3, 4, 5, 6, 7 };
 	cout << findMax(arr, 0, SIZE-1);
-
-	//f << 1000000;
-
+	
 	return 0;
 }
