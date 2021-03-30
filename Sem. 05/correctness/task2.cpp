@@ -26,7 +26,7 @@ int taskMystery(unsigned int x, unsigned y)
 		if (t % 2 == 0)
 		{
 			z = z*z;
-			t =  t/2;
+			t =  t / 2;
 		}
 		else
 		{
