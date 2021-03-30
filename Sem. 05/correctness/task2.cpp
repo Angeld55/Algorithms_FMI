@@ -3,7 +3,7 @@
 
 using namespace std;
  
-int taskMystery(int x, int y);
+int taskMystery(unsigned x, unsigned y);
 
 
 int main()
@@ -15,11 +15,11 @@ int main()
 
 
 
-int taskMystery(int x, int y)
+int taskMystery(unsigned int x, unsigned y)
 {
-	int z = x;
-	int t = y;
-	int p = 1;
+	unsignedint z = x;
+	unsigned t = y;
+	unsigned p = 1;
 
 	while (t > 0)
 	{
