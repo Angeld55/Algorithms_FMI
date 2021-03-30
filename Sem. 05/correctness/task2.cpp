@@ -17,7 +17,7 @@ int main()
 
 int taskMystery(unsigned int x, unsigned y)
 {
-	unsignedint z = x;
+	unsigned int z = x;
 	unsigned t = y;
 	unsigned p = 1;
 
