@@ -11,7 +11,7 @@ void swap(T* arr, int i, int j)
 }
 
 template <class T>
-void BubbleSort(T* arr, int len)
+void sampleBubbleSort(T* arr, int len)
 {
 
 	for (int i = 0; i < len; i++)
@@ -28,7 +28,7 @@ int main()
 {
 	int arr[] = { 7, 6, 5, 4, 3, 2, 1 };
 
-	BubbleSort<int>(arr, 7);
+	sampleBubbleSort<int>(arr, 7);
 
 	for (int i = 0; i < 7; i++)
 		cout << arr[i] << " ";
