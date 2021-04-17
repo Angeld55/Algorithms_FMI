@@ -14,7 +14,7 @@ unsigned power(unsigned n, unsigned k)
 	}
 	else
 	{
-		return n * pow(n, k - 1);
+		return n * power(n, k - 1);
 	}
 }
 
