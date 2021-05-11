@@ -6,7 +6,7 @@
 using namespace std;
 const int ENGLISH_ALPHABET_SIZE = 26;
 
-size_t Kadane(const vector<int>& arr) //Maximum subarray problem
+size_t kadane(const vector<int>& arr) //Maximum subarray problem
 {
 	int m = 0; //максималната сума на подмасив в подмасива arr[0...i-1].
 	int l = 0; //максималната сума на подмасив в подмасива arr[0...i-1], който завръшва на arr[i-1].
@@ -27,5 +27,5 @@ int main()
 {
 	vector<int> v = {-3,-4,44,-5,99};
 
-	std::cout << Kadane(v);
+	std::cout << kadane(v);
 }
