@@ -4,7 +4,6 @@
 #include <string>
 
 using namespace std;
-const int ENGLISH_ALPHABET_SIZE = 26;
 
 size_t Kadane(const vector<int>& arr) //Maximum subarray problem
 {
