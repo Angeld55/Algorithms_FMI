@@ -249,7 +249,7 @@ bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvi
 	while (!q.empty())
 	{
 		size_t currentVertex = q.front();
-		size_t currentColor = visited[currentVertex]; //0 unvisited, 1 black, 2 white
+		size_t currentColor = visited[currentVertex]; //0 unvisited, 1 white, 2 black
  		q.pop();
 		
 
