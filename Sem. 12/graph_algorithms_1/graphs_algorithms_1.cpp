@@ -2,7 +2,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
-using namespace std;
+
 
 class Graph
 {
@@ -10,11 +10,11 @@ class Graph
 	size_t V;
 	bool oriented;
 
-	void dfs_help_rec(size_t start, vector<bool>& visited, vector<size_t>& result);
-	bool contains_cycle_rec(size_t start, vector<bool>& visited, vector<bool>& stack);
-	void topo_sort_rec(size_t start, vector<bool>& visited, stack<size_t>& st);
+	void dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result);
+	bool contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack);
+	void topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st);
 
-	bool is_bipartite_help(size_t start, vector<int>& visited);
+	bool is_bipartite_help(size_t start, std::vector<int>& visited);
 
 
 
@@ -53,7 +53,7 @@ std::vector<size_t> Graph::BFS(size_t start)
 
 	std::vector<bool> visited(V);
 
-	queue<size_t> q;
+	std::queue<size_t> q;
 	q.push(start);
 	visited[start] = true;
 
@@ -83,7 +83,7 @@ int Graph::BFS_shortest_path(size_t start, size_t end)
 
 	std::vector<bool> visited(V);
 
-	queue<std::pair<size_t, size_t>> q; // <връх, разстояние от началото>
+	std::queue<std::pair<size_t, size_t>> q; // <връх, разстояние от началото>
 
 	q.push(std::make_pair(start,0));
 	visited[start] = true;
@@ -116,11 +116,11 @@ int Graph::BFS_shortest_path(size_t start, size_t end)
 
 std::vector<size_t> Graph::DFS_ITER(size_t start)
 {
-	vector<size_t> result;
+	std::vector<size_t> result;
 
-	vector<bool> visited(V);
+	std::vector<bool> visited(V);
 
-	stack<size_t> s;
+	std::stack<size_t> s;
 	s.push(start);
 
 	while (!s.empty())
@@ -143,7 +143,7 @@ std::vector<size_t> Graph::DFS_ITER(size_t start)
 	return std::move(result);
 }
 
-void Graph::dfs_help_rec(size_t start, vector<bool>& visited, vector<size_t>& result)
+void Graph::dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result)
 {
 	visited[start] = true;
 	result.push_back(start);
@@ -157,15 +157,15 @@ void Graph::dfs_help_rec(size_t start, vector<bool>& visited, vector<size_t>& re
 }
 std::vector<size_t>  Graph::DFS_REC(size_t start)
 {
-	vector<bool> visited(V);
-	vector<size_t> result;
+	std::vector<bool> visited(V);
+	std::vector<size_t> result;
 
 	dfs_help_rec(start, visited, result);
 
 	return result;
 }
 
-bool Graph::contains_cycle_rec(size_t start, vector<bool>& visited, vector<bool>& stack)
+bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack)
 {
 	if (!visited[start])
 	{
@@ -190,8 +190,8 @@ bool Graph::containsCycle()
 	if (!oriented)
 		throw std::exception("Error!");
 
-	vector<bool> visited(V);
-	vector<bool> inStack(V);
+	std::vector<bool> visited(V);
+	std::vector<bool> inStack(V);
 
 	for (int i = 0; i < V; i++)
 	{
@@ -202,7 +202,7 @@ bool Graph::containsCycle()
 
 }
 
-void Graph::topo_sort_rec(size_t start, vector<bool>& visited, stack<size_t>& st)
+void Graph::topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st)
 {
 	visited[start] = true;
 	for (int i = 0; i < adj[start].size(); i++)
@@ -215,15 +215,15 @@ void Graph::topo_sort_rec(size_t start, vector<bool>& visited, stack<size_t>& st
 }
 std::vector<size_t> Graph::topoSort()
 {
-	vector<bool> visited(V);
-	stack<size_t> st;
+	std::vector<bool> visited(V);
+	std::stack<size_t> st;
 
 	for (int i = 0; i < V; i++)
 	{
 		if (!visited[i])
 			topo_sort_rec(i, visited, st);
 	}
-	vector<size_t> result(V);
+	std::vector<size_t> result(V);
 
 	for (int i = 0; i < V; i++)
 	{
@@ -242,9 +242,9 @@ bool Graph::isConnected()
 	return BFS(0).size() == V;
 }
 
-bool Graph::is_bipartite_help(size_t start, vector<int>& visited) // 0 unvisited, 1 - white, 2 - black
+bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvisited, 1 - white, 2 - black
 {
-	queue<size_t> q;
+	std::queue<size_t> q;
 	q.push(start);
 	visited[start] = 1;
 
@@ -278,7 +278,7 @@ bool Graph::isBipartite()
 	if (oriented)
 		throw "error!";
 
-	vector<int> visited(V);
+	std::vector<int> visited(V);
 	for (int i = 0; i < V; i++)
 	{
 		if (visited[i] == 0 && !is_bipartite_help(i, visited))
@@ -296,6 +296,6 @@ int main()
 	g.addEdge(3, 1);
 
 
-	cout << g.isBipartite();
+	std::cout << g.isBipartite();
 
 }
