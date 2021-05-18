@@ -186,7 +186,7 @@ bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::ve
 bool Graph::containsCycle()
 {
 	if (!oriented)
-		throw std::exception("Error!");
+		throw std::exception("Error! The graph should be oriented!");
 
 	std::vector<bool> visited(V);
 	std::vector<bool> inStack(V);
@@ -235,7 +235,7 @@ std::vector<size_t> Graph::topoSort()
 bool Graph::isConnected()
 {
 	if (oriented)
-		throw "error!";
+		throw std::exception("Error! The graph should NOT be oriented!");
 
 	return BFS(0).size() == V;
 }
@@ -274,7 +274,7 @@ bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvi
 bool Graph::isBipartite()
 {
 	if (oriented)
-		throw "error!";
+		throw std::exception("Error! The graph should NOT be oriented!");
 
 	std::vector<int> visited(V);
 	for (int i = 0; i < V; i++)
