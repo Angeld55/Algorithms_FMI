@@ -15,9 +15,7 @@ class Graph
 	void topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st);
 
 	bool is_bipartite_help(size_t start, std::vector<int>& visited);
-
-
-
+	
 public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end);
