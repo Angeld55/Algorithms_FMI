@@ -29,12 +29,12 @@ public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end, int weight);
 
-    size_t dijkstra(size_t start, size_t end, std::vector<size_t>& path);
-	std::vector<size_t> bellmanFord(size_t start);
-	std::vector<std::vector<int>> FloydWarshall();
+    size_t dijkstra(size_t start, size_t end, std::vector<size_t>& path) const;
+	std::vector<size_t> bellmanFord(size_t start) const;
+	std::vector<std::vector<int>> FloydWarshall() const;
 
-	size_t Prim(std::vector<Edge>& MST);
-	size_t Kruskal(std::vector<Edge>& MST);
+	size_t Prim(std::vector<Edge>& MST) const;
+	size_t Kruskal(std::vector<Edge>& MST) const;
 
 };
 
@@ -47,7 +47,7 @@ void Graph::addEdge(size_t start, size_t end, int weight)
 		adj[end].push_back(std::make_pair(start,weight));
 }
 
-size_t Graph::dijkstra(size_t start, size_t end, std::vector<size_t>& path)
+size_t Graph::dijkstra(size_t start, size_t end, std::vector<size_t>& path) const
 {
 	std::vector<size_t> distances(V, INT_MAX);
 	std::vector<size_t> prevs(V);
@@ -107,7 +107,7 @@ size_t Graph::dijkstra(size_t start, size_t end, std::vector<size_t>& path)
 
 }
 
-std::vector<size_t> Graph::bellmanFord(size_t start)
+std::vector<size_t> Graph::bellmanFord(size_t start) const
 {
 	std::vector<size_t> distances(V, INT_MAX);
 
@@ -139,7 +139,7 @@ std::vector<size_t> Graph::bellmanFord(size_t start)
 }
 
 
-size_t Graph::Prim(std::vector<Edge>& MST)
+size_t Graph::Prim(std::vector<Edge>& MST) const
 {
 	auto comp = [](const Edge& lhs, const Edge& rhs)
 	{
@@ -194,7 +194,7 @@ size_t Graph::Prim(std::vector<Edge>& MST)
 
 
 
-size_t Graph::Kruskal(std::vector<Edge>& MST)
+size_t Graph::Kruskal(std::vector<Edge>& MST) const
 {
 
 	std::vector<Edge> edges;
@@ -231,7 +231,7 @@ size_t Graph::Kruskal(std::vector<Edge>& MST)
 	return resultMSTWeight;
 }
 
-std::vector<std::vector<int>> Graph::FloydWarshall()
+std::vector<std::vector<int>> Graph::FloydWarshall() const
 {
 
 	std::vector<std::vector<int>> minDistances;
