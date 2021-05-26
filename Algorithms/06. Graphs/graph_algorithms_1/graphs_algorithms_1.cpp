@@ -15,7 +15,7 @@ class Graph
 	void topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st);
 
 	bool is_bipartite_help(size_t start, std::vector<int>& visited);
-	
+
 public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end);
@@ -34,6 +34,10 @@ public:
 	bool isConnected();
 
 	bool isBipartite();
+
+	Graph getTranspose();
+
+	std::vector<std::vector<size_t>> getStronglyConnectedComponents();
 
 };
 Graph::Graph(size_t V, bool isOriented) : adj(V), V(V), oriented(isOriented)
@@ -83,7 +87,7 @@ int Graph::BFS_shortest_path(size_t start, size_t end)
 
 	std::queue<std::pair<size_t, size_t>> q; // <връх, разстояние от началото>
 
-	q.push(std::make_pair(start,0));
+	q.push(std::make_pair(start, 0));
 	visited[start] = true;
 
 	while (!q.empty())
@@ -104,7 +108,7 @@ int Graph::BFS_shortest_path(size_t start, size_t end)
 			if (visited[neighbor])
 				continue;
 
-			q.push(std::make_pair(neighbor, dist+1));
+			q.push(std::make_pair(neighbor, dist + 1));
 			visited[neighbor] = true;
 		}
 	}
@@ -176,7 +180,7 @@ bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::ve
 
 			if (!visited[neihbor] && contains_cycle_rec(neihbor, visited, stack))
 				return true;
-			else if (stack[neihbor])	
+			else if (stack[neihbor])
 				return true;
 		}
 	}
@@ -250,8 +254,8 @@ bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvi
 	{
 		size_t currentVertex = q.front();
 		size_t currentColor = visited[currentVertex]; //0 unvisited, 1 white, 2 black
- 		q.pop();
-		
+		q.pop();
+
 
 		for (int i = 0; i < adj[currentVertex].size(); i++)
 		{
@@ -265,7 +269,7 @@ bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvi
 
 			q.push(neighbor);
 
-			visited[neighbor] = currentColor == 1 ? 2 : 1 ;
+			visited[neighbor] = currentColor == 1 ? 2 : 1;
 		}
 	}
 	return true;
@@ -284,16 +288,66 @@ bool Graph::isBipartite()
 	}
 	return true;
 }
+
+Graph Graph::getTranspose()
+{
+	Graph result(V, true);
+
+	for (int i = 0; i < adj.size(); i++)
+	{
+		for (int j = 0; j < adj[i].size(); j++)
+			result.addEdge(adj[i][j], i);
+	}
+	return result;
+}
+
+std::vector<std::vector<size_t>> Graph::getStronglyConnectedComponents()
+{
+	std::vector<size_t> topo = topoSort();
+
+	Graph transponsedGraph = getTranspose();
+
+	std::vector<bool> visited(V);
+
+	std::vector<std::vector<size_t>> result;
+	for (int i = 0; i < topo.size(); i++)
+	{
+		if (visited[topo[i]])
+			continue;
+
+		std::vector<size_t> currentStronglyConnectedComponent;
+		transponsedGraph.dfs_help_rec(topo[i], visited, currentStronglyConnectedComponent);
+		result.push_back(currentStronglyConnectedComponent);
+	}
+
+	return result;
+
+}
 int main()
 {
-	Graph g(4, false); 
+	Graph g(9, true);
 
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
 	g.addEdge(2, 3);
-	g.addEdge(3, 1);
+	g.addEdge(3, 0);
 
+	g.addEdge(2, 4);
+	g.addEdge(4, 5);
+	g.addEdge(5, 6);
+	g.addEdge(6, 4);
 
-	std::cout << g.isBipartite();
+	g.addEdge(7, 6);
+	g.addEdge(7, 8);
+
+	auto scc = g.getStronglyConnectedComponents();
+
+	for (int i = 0; i < scc.size(); i++)
+	{
+		for (int j = 0; j < scc[i].size(); j++)
+			std::cout << scc[i][j] << " ";
+
+		std::cout << std::endl;
+	}
 
 }
