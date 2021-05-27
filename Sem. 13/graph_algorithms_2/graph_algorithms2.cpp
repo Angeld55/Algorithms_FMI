@@ -22,14 +22,11 @@ class Graph
 	size_t V;
 	std::vector<std::vector<std::pair<int, int>>> adj;
 
-
-	bool is_bipartite_help(size_t start, std::vector<int>& visited);
-
 public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end, int weight);
 
-    size_t dijkstra(size_t start, size_t end, std::vector<size_t>& path) const;
+	size_t dijkstra(size_t start, size_t end, std::vector<size_t>& path) const;
 	std::vector<size_t> bellmanFord(size_t start) const;
 	std::vector<std::vector<int>> FloydWarshall() const;
 
@@ -44,7 +41,7 @@ void Graph::addEdge(size_t start, size_t end, int weight)
 {
 	adj[start].push_back(std::make_pair(end, weight));
 	if (!isOriented)
-		adj[end].push_back(std::make_pair(start,weight));
+		adj[end].push_back(std::make_pair(start, weight));
 }
 
 size_t Graph::dijkstra(size_t start, size_t end, std::vector<size_t>& path) const
@@ -88,7 +85,7 @@ size_t Graph::dijkstra(size_t start, size_t end, std::vector<size_t>& path) cons
 
 			return distances[current.vertex];
 		}
-	
+
 		for (int i = 0; i < adj[current.vertex].size(); i++)
 		{
 			size_t currentNeighbor = adj[current.vertex][i].first;
@@ -146,7 +143,7 @@ size_t Graph::Prim(std::vector<Edge>& MST) const
 		return std::get<2>(lhs) > std::get<2>(rhs);
 	};
 
-	std::priority_queue<Edge, std::vector<Edge>, decltype(comp)> q;
+	std::priority_queue<Edge, std::vector<Edge>, decltype(comp)> q(comp);
 
 	std::vector<bool> visited(V);
 
@@ -156,12 +153,12 @@ size_t Graph::Prim(std::vector<Edge>& MST) const
 
 	bool isFirst = true;
 
-	while (addedEdges < V-1)
+	while (addedEdges < V - 1)
 	{
 		auto current = q.top();
 		q.pop();
-		
-		size_t start =  std::get<0>(current);
+
+		size_t start = std::get<0>(current);
 		size_t dest = std::get<1>(current);
 		int weight = std::get<2>(current);
 
@@ -172,7 +169,7 @@ size_t Graph::Prim(std::vector<Edge>& MST) const
 
 		for (int i = 0; i < adj[dest].size(); i++)
 		{
-			q.emplace(dest, adj[dest][i].first, adj[dest][i].second);
+			q.push(std::make_tuple(dest, adj[dest][i].first, adj[dest][i].second));
 		}
 
 		if (isFirst)
@@ -301,7 +298,7 @@ int main()
 		std::vector<size_t> paths = g.bellmanFord(0);
 
 		for (int i = 0; i < paths.size(); i++)
-			std::cout << "< To: " << i <<", path weight: " << paths[i] << " >   " <<std::endl;
+			std::cout << "< To: " << i << ", path weight: " << paths[i] << " >   " << std::endl;
 		std::cout << std::endl << std::endl << std::endl;
 	}
 
@@ -317,7 +314,7 @@ int main()
 				std::cout << std::setw(5) << paths[i][j] << " ";
 			std::cout << std::endl;
 		}
-		
+
 		std::cout << std::endl << std::endl << std::endl;
 	}
 
@@ -340,4 +337,3 @@ int main()
 			printEdge(MST[i]);
 	}
 }
-
