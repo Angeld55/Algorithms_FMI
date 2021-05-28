@@ -8,4 +8,6 @@
  - Prim's algorithm 
  - Kruskal's algorithm 
 
+#### Примерите са изпълнени върху следниия граф
 
+![enter image description here](https://i.ibb.co/NxyJKfH/Fig-11.jpg)
