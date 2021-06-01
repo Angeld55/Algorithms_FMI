@@ -23,7 +23,7 @@ void print(const vector<vector<bool>>& m)
 	}
 	cout << endl << endl << endl;
 }
-bool subsetSum(vector<int> arr, int sum, vector<int>& subset)
+bool subsetSum(const vector<int>& arr, int sum, vector<int>& subset)
 {
 	int rows = arr.size() + 1;
 	int colls = sum + 1;
