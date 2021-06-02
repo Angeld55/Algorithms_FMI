@@ -54,7 +54,7 @@ int main()
 
 	auto end = clock();
 	auto elapsed_secs = double(end - begin);
-	cout << "No DP: " << elapsed_secs << endl;
+	cout << "Rec: " << elapsed_secs << endl;
 
 	begin = clock();
 
