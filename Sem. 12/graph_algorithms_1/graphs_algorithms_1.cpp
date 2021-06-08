@@ -17,6 +17,8 @@ class Graph
 
 	bool is_bipartite_help(size_t start, std::vector<int>& visited) const;
 
+	size_t findBridgesDfsRec(size_t vertex, size_t vertexLevel, std::vector<size_t>& levels, std::vector<bool>& visited, std::vector<std::pair<size_t, size_t>>& result, std::vector<bool>& stack) const;
+
 public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end);
@@ -39,6 +41,8 @@ public:
 	Graph getTranspose() const;
 
 	std::vector<std::vector<size_t>> getStronglyConnectedComponents() const;
+
+	std::vector<std::pair<size_t, size_t>> Graph::findCutEdges() const;
 
 };
 Graph::Graph(size_t V, bool isOriented) : adj(V), V(V), oriented(isOriented)
@@ -324,9 +328,54 @@ std::vector<std::vector<size_t>> Graph::getStronglyConnectedComponents() const
 	return result;
 
 }
+
+std::vector<std::pair<size_t, size_t>> Graph::findCutEdges() const
+{
+	std::vector<size_t> levels(V,9999);
+	std::vector<bool> visited(V, false);
+	std::vector<bool> stack(V, false);
+
+	std::vector<std::pair<size_t, size_t>> result;
+	
+	findBridgesDfsRec(0,0, levels, visited,result, stack);
+
+	return std::move(result);
+}
+
+size_t Graph::findBridgesDfsRec(size_t vertex, size_t vertexLevel, std::vector<size_t>& levels, std::vector<bool>& visited, std::vector<std::pair<size_t, size_t>>& result, std::vector<bool>& stack) const
+{
+	stack[vertex] = true;
+	levels[vertex] = vertexLevel;
+	size_t minBack = vertexLevel;
+
+	for (int i = 0; i < adj[vertex].size(); i++)
+	{
+		size_t neihbor = adj[vertex][i]
+			;
+		if (!visited[neihbor] && !stack[neihbor])
+		{
+			size_t b = findBridgesDfsRec(neihbor, vertexLevel + 1, levels, visited, result, stack);
+
+			if (b > levels[vertex])
+				result.emplace_back(vertex, neihbor);
+			else
+				minBack = std::min(minBack, b);
+		}
+
+		if (!visited[neihbor] && stack[neihbor])
+		{
+			if (levels[neihbor] < minBack &&  levels[neihbor] != levels[vertex] - 1)
+				minBack = levels[neihbor];
+		}
+	}
+	visited[vertex] = true;
+	stack[vertex] = false;
+
+	return minBack;
+}
 int main()
 {
-	Graph g(9, true);
+	Graph g(9, false);
 
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
@@ -341,14 +390,8 @@ int main()
 	g.addEdge(7, 6);
 	g.addEdge(7, 8);
 
-	auto scc = g.getStronglyConnectedComponents();
+	auto scc = g.findCutEdges();
 
 	for (int i = 0; i < scc.size(); i++)
-	{
-		for (int j = 0; j < scc[i].size(); j++)
-			std::cout << scc[i][j] << " ";
-
-		std::cout << std::endl;
-	}
-
+		std::cout << scc[i].first << " " << scc[i].second << std::endl;
 }
