@@ -130,6 +130,7 @@ bool Graph::simplePath(size_t start, size_t end) const
 {
 	auto cutEdges = findCutEdges();
 
+	//Could save some memory here!?
 	std::vector<std::vector<bool>> cutEdgesCollection;
 	cutEdgesCollection.resize(V, std::vector<bool>(V));
 
