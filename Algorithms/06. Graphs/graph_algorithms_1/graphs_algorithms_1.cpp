@@ -10,34 +10,38 @@ class Graph
 	size_t V;
 	bool oriented;
 
-	void dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result);
-	bool contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack);
-	void topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st);
+	void dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result) const;
+	bool contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack) const;
+	void topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st) const;
 
-	bool is_bipartite_help(size_t start, std::vector<int>& visited);
+	bool is_bipartite_help(size_t start, std::vector<int>& visited) const;
+
+	size_t findBridgesDfsRec(size_t vertex, size_t vertexLevel, std::vector<size_t>& levels, std::vector<bool>& visited, std::vector<std::pair<size_t, size_t>>& result, std::vector<bool>& stack) const;
 
 public:
 	Graph(size_t V, bool isOriented);
 	void addEdge(size_t start, size_t end);
 
-	std::vector<size_t> BFS(size_t start);
+	std::vector<size_t> BFS(size_t start) const;
 
-	std::vector <size_t> DFS_ITER(size_t start);
-	std::vector<size_t>  DFS_REC(size_t start);
+	std::vector <size_t> DFS_ITER(size_t start) const;
+	std::vector<size_t>  DFS_REC(size_t start) const;
 
-	int BFS_shortest_path(size_t start, size_t end);
+	int BFS_shortest_path(size_t start, size_t end) const;
 
-	bool containsCycle();
+	bool containsCycle() const;
 
-	std::vector<size_t> topoSort();
+	std::vector<size_t> topoSort() const;
 
-	bool isConnected();
+	bool isConnected() const;
 
-	bool isBipartite();
+	bool isBipartite() const;
 
-	Graph getTranspose();
+	Graph getTranspose() const;
 
-	std::vector<std::vector<size_t>> getStronglyConnectedComponents();
+	std::vector<std::vector<size_t>> getStronglyConnectedComponents() const;
+
+	std::vector<std::pair<size_t, size_t>> Graph::findCutEdges() const;
 
 };
 Graph::Graph(size_t V, bool isOriented) : adj(V), V(V), oriented(isOriented)
@@ -49,7 +53,7 @@ void Graph::addEdge(size_t start, size_t end)
 		adj[end].push_back(start);
 }
 
-std::vector<size_t> Graph::BFS(size_t start)
+std::vector<size_t> Graph::BFS(size_t start) const
 {
 	std::vector<size_t> result;
 
@@ -79,7 +83,7 @@ std::vector<size_t> Graph::BFS(size_t start)
 	return std::move(result);
 }
 
-int Graph::BFS_shortest_path(size_t start, size_t end)
+int Graph::BFS_shortest_path(size_t start, size_t end) const
 {
 	std::vector<size_t> result;
 
@@ -116,7 +120,7 @@ int Graph::BFS_shortest_path(size_t start, size_t end)
 	return -1;
 }
 
-std::vector<size_t> Graph::DFS_ITER(size_t start)
+std::vector<size_t> Graph::DFS_ITER(size_t start) const
 {
 	std::vector<size_t> result;
 
@@ -145,7 +149,7 @@ std::vector<size_t> Graph::DFS_ITER(size_t start)
 	return std::move(result);
 }
 
-void Graph::dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result)
+void Graph::dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<size_t>& result) const
 {
 	visited[start] = true;
 	result.push_back(start);
@@ -157,7 +161,7 @@ void Graph::dfs_help_rec(size_t start, std::vector<bool>& visited, std::vector<s
 			dfs_help_rec(neighbor, visited, result);
 	}
 }
-std::vector<size_t>  Graph::DFS_REC(size_t start)
+std::vector<size_t>  Graph::DFS_REC(size_t start) const
 {
 	std::vector<bool> visited(V);
 	std::vector<size_t> result;
@@ -167,7 +171,7 @@ std::vector<size_t>  Graph::DFS_REC(size_t start)
 	return result;
 }
 
-bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack)
+bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::vector<bool>& stack) const
 {
 	if (!visited[start])
 	{
@@ -187,7 +191,7 @@ bool Graph::contains_cycle_rec(size_t start, std::vector<bool>& visited, std::ve
 	stack[start] = false;
 	return false;
 }
-bool Graph::containsCycle()
+bool Graph::containsCycle() const
 {
 	if (!oriented)
 		throw std::exception("Error! The graph should be oriented!");
@@ -204,7 +208,7 @@ bool Graph::containsCycle()
 
 }
 
-void Graph::topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st)
+void Graph::topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<size_t>& st) const
 {
 	visited[start] = true;
 	for (int i = 0; i < adj[start].size(); i++)
@@ -215,7 +219,7 @@ void Graph::topo_sort_rec(size_t start, std::vector<bool>& visited, std::stack<s
 	}
 	st.push(start);
 }
-std::vector<size_t> Graph::topoSort()
+std::vector<size_t> Graph::topoSort() const
 {
 	std::vector<bool> visited(V);
 	std::stack<size_t> st;
@@ -236,7 +240,7 @@ std::vector<size_t> Graph::topoSort()
 	return std::move(result);
 }
 
-bool Graph::isConnected()
+bool Graph::isConnected() const
 {
 	if (oriented)
 		throw std::exception("Error! The graph should NOT be oriented!");
@@ -244,7 +248,7 @@ bool Graph::isConnected()
 	return BFS(0).size() == V;
 }
 
-bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvisited, 1 - white, 2 - black
+bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) const // 0 unvisited, 1 - white, 2 - black
 {
 	std::queue<size_t> q;
 	q.push(start);
@@ -275,7 +279,7 @@ bool Graph::is_bipartite_help(size_t start, std::vector<int>& visited) // 0 unvi
 	return true;
 }
 
-bool Graph::isBipartite()
+bool Graph::isBipartite() const
 {
 	if (oriented)
 		throw std::exception("Error! The graph should NOT be oriented!");
@@ -289,7 +293,7 @@ bool Graph::isBipartite()
 	return true;
 }
 
-Graph Graph::getTranspose()
+Graph Graph::getTranspose() const
 {
 	Graph result(V, true);
 
@@ -301,7 +305,7 @@ Graph Graph::getTranspose()
 	return result;
 }
 
-std::vector<std::vector<size_t>> Graph::getStronglyConnectedComponents()
+std::vector<std::vector<size_t>> Graph::getStronglyConnectedComponents() const
 {
 	std::vector<size_t> topo = topoSort();
 
@@ -323,9 +327,54 @@ std::vector<std::vector<size_t>> Graph::getStronglyConnectedComponents()
 	return result;
 
 }
+
+std::vector<std::pair<size_t, size_t>> Graph::findCutEdges() const
+{
+	std::vector<size_t> levels(V,9999);
+	std::vector<bool> visited(V, false);
+	std::vector<bool> stack(V, false);
+
+	std::vector<std::pair<size_t, size_t>> result;
+	
+	findBridgesDfsRec(0,0, levels, visited,result, stack);
+
+	return std::move(result);
+}
+
+size_t Graph::findBridgesDfsRec(size_t vertex, size_t vertexLevel, std::vector<size_t>& levels, std::vector<bool>& visited, std::vector<std::pair<size_t, size_t>>& result, std::vector<bool>& stack) const
+{
+	stack[vertex] = true;
+	levels[vertex] = vertexLevel;
+	size_t minBack = vertexLevel;
+
+	for (int i = 0; i < adj[vertex].size(); i++)
+	{
+		size_t neihbor = adj[vertex][i]
+			;
+		if (!visited[neihbor] && !stack[neihbor])
+		{
+			size_t b = findBridgesDfsRec(neihbor, vertexLevel + 1, levels, visited, result, stack);
+
+			if (b > levels[vertex])
+				result.emplace_back(vertex, neihbor);
+			else
+				minBack = std::min(minBack, b);
+		}
+
+		if (!visited[neihbor] && stack[neihbor])
+		{
+			if (levels[neihbor] < minBack &&  levels[neihbor] != levels[vertex] - 1)
+				minBack = levels[neihbor];
+		}
+	}
+	visited[vertex] = true;
+	stack[vertex] = false;
+
+	return minBack;
+}
 int main()
 {
-	Graph g(9, true);
+	Graph g(9, false);
 
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
@@ -340,14 +389,8 @@ int main()
 	g.addEdge(7, 6);
 	g.addEdge(7, 8);
 
-	auto scc = g.getStronglyConnectedComponents();
+	auto scc = g.findCutEdges();
 
 	for (int i = 0; i < scc.size(); i++)
-	{
-		for (int j = 0; j < scc[i].size(); j++)
-			std::cout << scc[i][j] << " ";
-
-		std::cout << std::endl;
-	}
-
+		std::cout << scc[i].first << " " << scc[i].second << std::endl;
 }
