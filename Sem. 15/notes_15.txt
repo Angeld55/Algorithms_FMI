@@ -74,16 +74,16 @@ ElementUniqueness(arr[1...n])
 
 Задача 5.
 
-ClosestPair(arr[1...n])
+closestPair(arr[1...n])
 {
 	points[1...n] - масив от точки.
 	for(int i  = 0; i < n; i++)
 		points.x = arr[i]
 		points.y = 1;
 	
-	return 	taskX(points[1...n])
+	return 	closesPairOfPoints(points[1...n])
 }
-=> долна граница n*log(n) за taskX.
+=> долна граница n*log(n) за closesPairOfPoints.
 
 Задача 6.
 
