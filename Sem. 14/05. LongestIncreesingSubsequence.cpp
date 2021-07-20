@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
@@ -74,7 +75,7 @@ int longestIncreesingSubsequenceDyn(const vector<int>& arr, vector<int>& path)
 
 	//path
 	int pathIter = maxInd;
-	while (prev[pathIter] != -1)
+	while (pathIter != -1)
 	{
 		path.push_back(arr[pathIter]);
 		pathIter = prev[pathIter];
