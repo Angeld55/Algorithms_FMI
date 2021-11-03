@@ -1,15 +1,17 @@
 #include <iostream>
 using namespace std;
 
-bool BinarySearch(const int* arr, int len, int searched)
+template <class T>
+int BinarySearch(const int* arr, int len, const T& searched)
 {
 	if (len == 0)
-		return false;
+		return -1;
 
 	int midIndex = len / 2;
 
 	if (arr[midIndex] == searched)
-		return true;
+		return midIndex;
+	
 	if (arr[midIndex] < searched)
 		return BinarySearch(arr + midIndex + 1, len - midIndex - 1, searched);
 	else
