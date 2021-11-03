@@ -2,7 +2,7 @@
 using namespace std;
 
 template <class T>
-bool linearSearch(const T* arr, int len, T searched)
+bool linearSearch(const T* arr, int len, const T& searched)
 {
 	if (len == 0)
 		return false;
