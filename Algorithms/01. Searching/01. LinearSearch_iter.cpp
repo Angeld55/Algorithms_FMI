@@ -2,14 +2,14 @@
 using namespace std;
 
 template <class T>
-int linearSearch(const T* arr, int len, T searched)
+int linearSearch(const T* arr, int len, const T& searched)
 {
 	for (int i = 0; i < len; i++)
 	{
 		if (arr[i] == searched)
-			return i;//връщаме индекса.
+			return i;
 	}
-	return -1;//елементът го няма
+	return -1;
 }
 
 int main()
