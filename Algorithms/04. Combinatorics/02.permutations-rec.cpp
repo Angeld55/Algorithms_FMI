@@ -1,5 +1,4 @@
-	#include <iostream>
-#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -9,15 +8,13 @@ void print(const int* arr, int len)
 		cout << arr[i] << " ";
 	cout << endl;
 }
-void generatePermutations(int* arr, int len,  int index)
+void generatePermutations(int* arr, int len, int index)
 {
 	if (index >= len)
 		print(arr, len);
 	else
 	{
-		generatePermutations(arr, len, index + 1);
-
-		for (int i = index + 1; i < len; i++) 
+		for (int i = index; i < len; i++)
 		{
 			std::swap(arr[index], arr[i]);
 			generatePermutations(arr, len, index + 1);
@@ -32,7 +29,6 @@ void generatePermutations(int* arr, int len,  int index)
 int main()
 {
 	int arr[4] = { 1, 2, 3, 4 };
-	generatePermutations(arr ,4 , 0);
-	
+	generatePermutations(arr, 4, 0);
+
 }
- 
