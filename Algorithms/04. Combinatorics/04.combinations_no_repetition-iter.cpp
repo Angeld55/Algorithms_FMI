@@ -1,43 +1,48 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 
-const int MAX = 20;
-void PrintIt(const int* B, int len)
+using namespace std;
+
+void printVector(const std::vector<size_t>& arr)
 {
-	for (int i = 0; i < len; i++)
-		std::cout << B[i] << " ";
-	std::cout << std::endl;
+	for (int i = 0; i < arr.size(); i++)
+		cout << arr[i] << " ";
+	cout << endl;
 }
-bool Next(int* B, int n, int k)
+
+bool nextObj(std::vector<size_t>& v, size_t n) //k is v.size()
 {
-	int j = k - 1;
-	while (j >= 0 && B[j] == n - k + j + 1)  //n-k+j+1 - the max el possible for position j
+	int j = v.size() - 1;
+
+	while (j >= 0 && v[j] == n - v.size() + j + 1)
 		j--;
+
 	if (j < 0)
 		return false;
-	B[j]++;
-	for (int i = j + 1; i < k; i++)
-		B[i] = B[i - 1] + 1;
+
+	v[j]++;
+
+	for (size_t i = j + 1; i < v.size(); i++)
+		v[i] = v[i - 1] + 1;
+
 	return true;
 }
-int main()
+
+void generateAllCombinations(size_t n, size_t k)
 {
-	// All bitstrings of subsets
-
-	int B[MAX + 1];
-	int n, k;
-	std::cin >> n >> k;
-	//B[0] = 0;//santinel
+	std::vector<size_t> v(k);
 	for (int i = 0; i < k; i++)
-		B[i] = i + 1;
+		v[i] = i + 1;
 
-	bool res = true;
 	do
 	{
-		PrintIt(B, k);
-		res = Next(B, n, k); //we scan from the right for the rightmost index j whose corresponding element can be increased
+		printVector(v);
+	} while (nextObj(v, n));
+}
 
-	} while (res);
 
-	while (true){}
-
+int main()
+{
+	generateAllCombinations(5, 3);
 }
