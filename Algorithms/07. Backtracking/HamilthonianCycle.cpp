@@ -27,7 +27,7 @@ public:
 
 };
 
-bool hamilthonian_path_rec(const RandomGraph& currentGraph, size_t start, size_t currentVertex, std::vector<bool>& visited, size_t recursionDepth)
+bool hamilthonian_cycle_rec(const RandomGraph& currentGraph, size_t start, size_t currentVertex, std::vector<bool>& visited, size_t recursionDepth)
 {
 	visited[currentVertex] = true;
 	auto currentAdj = currentGraph.getAdjacentVertices(currentVertex);
@@ -40,22 +40,17 @@ bool hamilthonian_path_rec(const RandomGraph& currentGraph, size_t start, size_t
 
 		if (visited[neihbor])
 			continue;
-		if (hamilthonian_path_rec(currentGraph, start, neihbor, visited, recursionDepth + 1))
+		if (hamilthonian_cycle_rec(currentGraph, start, neihbor, visited, recursionDepth + 1))
 			return true;
 	}
 	visited[currentVertex] = false;
 	return false;
 }
 
-bool hamilthonian_path(const RandomGraph& currentGraph)
+bool hamilthonian_cycle(const RandomGraph& currentGraph)
 {
-	for (size_t i = 0; i < currentGraph.getVerticesCount(); i++)
-	{
-		std::vector<bool> visited(currentGraph.getVerticesCount());
-		if (hamilthonian_path_rec(currentGraph, i, i, visited, 1))
-			return true;
-	}
-	return false;
+	std::vector<bool> visited(currentGraph.getVerticesCount());
+	return hamilthonian_cycle_rec(currentGraph, 0, 0, visited, 1);
 }
 
 
@@ -67,5 +62,6 @@ int main()
 	g.addEdge(2, 1);
 	g.addEdge(3, 2);
 	g.addEdge(3, 0);
-	std::cout << hamilthonian_path(g) << std::endl;
+	g.addEdge(0, 2);
+	std::cout << hamilthonian_cycle(g) << std::endl;
 }
