@@ -20,7 +20,7 @@
 
 
 
-### Код от семинарите по Алгоритми (част 2) - ФМИ
+### Код от семинарите по Алгоритми и Програмиране (част 2) - ФМИ
  - **Тема :**  [Комбинаторно генериране. Генериране на прости комбинаторни обекти.](https://github.com/Angeld55/Data_structures_and_algorithms_FMI/tree/main/advanced_CombinatorialGeneration)
  - **Тема :**  [Сегментни дървета.](https://github.com/Angeld55/Data_structures_and_algorithms_FMI/tree/main/advanced_SegmentTrees)
  - **Тема :**  [Многонишково програмиране.](https://github.com/Angeld55/Data_structures_and_algorithms_FMI/tree/main/advanced_Multithreading)
