@@ -1,19 +1,12 @@
 #include <iostream>
 #include <fstream>
-
-using namespace std;
  
-int taskMystery(unsigned x, unsigned y);
-
+unsigned taskMystery(unsigned x, unsigned y);
 
 int main()
 {
-
-	cout << taskMystery(5, 4);
+	std:cout << taskMystery(5, 4);
 }
-
-
-
 
 int taskMystery(unsigned int x, unsigned y)
 {
