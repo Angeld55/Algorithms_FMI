@@ -2,10 +2,8 @@
 using namespace std;
 
 template <typename T>
-int partition(T* arr, int len, int p)
+int partition(T* arr, int len, T pivot)
 {
-
-	const T& pivot = p;
 	int i = 0, j = len - 1;
 
 	while (true)
