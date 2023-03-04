@@ -1,38 +1,49 @@
 #include <iostream>
 using namespace std;
 
-template <typename T>
-int Partition(T* arr, int len)
+template <class T>
+size_t partition(T* pArr, size_t len)
 {
+    if(pArr[0] > pArr[len - 1])
+        std::swap(pArr[0],  pArr[len - 1]);
 
-	T pivot = arr[len / 2];
-	int i = 0, j = len-1 ;
+	T& partitioningElement = pArr[len-1];
+    
+    size_t left = 0;
+    size_t right = len - 1;
 
-	while (true)
+	while(true)
 	{
+		while(pArr[++left] < partitioningElement)
+			;
 
-		while (arr[j] > pivot)
-			j--;
+		while(pArr[--right] > partitioningElement)
+		{
+			if(left == right)
+				break;
+		}
 
-		while (arr[i] < pivot)
-			i++;
+		if(left >= right)
+			break;
 
-		if (i < j)
-			std::swap(arr[i], arr[j]);
-		else
-			return j;
+		std::swap(pArr[left], pArr[right]);
 	}
+
+	std::swap(pArr[left], partitioningElement);
+
+	return left;
 }
 
 
 
 template <typename T>
-void QuickSort(T* arr, int len)
+void QuickSort(T* arr, size_t len)
 {
 	if (len <= 1)
 		return;
 	
-	int pivotIndex = Partition(arr, len);
+	size_t pivotIndex = partition(arr, len);
+
 	QuickSort(arr, pivotIndex);
 	QuickSort(arr + pivotIndex + 1, len - pivotIndex-1);
 }
