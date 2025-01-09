@@ -68,15 +68,15 @@ std::vector<size_t> Graph::BFS(size_t start) const
 		size_t currentVertex = q.front();
 		q.pop();
 
-		result.push_back(currentVertex);
-
 		for (int i = 0; i < adj[currentVertex].size(); i++)
 		{
 			size_t neighbor = adj[currentVertex][i];
 			if (visited[neighbor])
 				continue;
-			q.push(neighbor);
+			
+			result.push_back(currentVertex);
 			visited[neighbor] = true;
+			q.push(neighbor);
 		}
 	}
 
