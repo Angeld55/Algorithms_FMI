@@ -30,7 +30,7 @@ void BubbleSort(T* arr, int len)
 		}
 
 		end = lastSwappedIndex;
-		if (lastSwappedIndex == 0) //Масив дали вече е сортиран? 
+		if (lastSwappedIndex == 0) //РњР°СЃРёРІСЉС‚ РґР°Р»Рё РІРµС‡Рµ Рµ СЃРѕСЂС‚РёСЂР°РЅ?
 			return;
 	}
 }
